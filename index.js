@@ -2,7 +2,7 @@ const express = require('express');
 
 const routerApi = require("./routes/index")
 
-const {errorHandler,logErrors} =require("./middlewares/error.handler")
+const {errorHandler,logErrors,boomerrorHandler} =require("./middlewares/error.handler")
 
 const { faker } = require("@faker-js/faker")
 
@@ -24,6 +24,7 @@ app.get('/nueva-ruta', (req, res) => {
 routerApi(app)
 
 app.use(logErrors);
+app.use(boomerrorHandler)
 app.use(errorHandler)
 
 
