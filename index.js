@@ -2,7 +2,7 @@ const express = require('express');
 
 const routerApi = require("./routes/index")
 
-
+const {errorHandler,logErrors} =require("./middlewares/error.handler")
 
 const { faker } = require("@faker-js/faker")
 
@@ -23,6 +23,8 @@ app.get('/nueva-ruta', (req, res) => {
 
 routerApi(app)
 
+app.use(logErrors);
+app.use(errorHandler)
 
 
 
